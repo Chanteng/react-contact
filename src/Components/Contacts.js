@@ -1,25 +1,22 @@
-import React from 'react'
+import React from "react";
+import ContactsDelete from "./ContactsDelete";
 
-class Contacts extends React.Component {
-    render() {
-        const users = this.props.user
-       
-                return (
-                    <div>
-                    {  
-                      users.map((user, index) => {return (
-                          <div key={index}>
-                            <h2>{user.name}</h2>
-                            <h2>{user.number}</h2>
-                            <h2>{user.location}</h2>
-                          </div>
-                        );
-                      })
-                    }
-                  </div>
-                )
-            
-    }
+
+function Contacts(props) {
+  return (
+    <div>
+      {props.users.map((user) => {
+        return (
+          <ContactsDelete
+            user={user}
+            key={user.id}
+            deleteUser={props.deleteUser}
+            editUser={props.editUser}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
 export default Contacts;

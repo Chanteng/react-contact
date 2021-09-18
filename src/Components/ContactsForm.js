@@ -1,55 +1,41 @@
-import React from 'react'
+import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 
-class ContactsForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {name: "", number: "", location: ""}
+
+
+function ContactsForm(props) {
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [location, setLocation] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (number && name && location) {
+      let newUser = {
+        name: name,
+        number: number,
+        location: location,
+        id: uuid(),
+      };
+
+      props.addUser(newUser);
+
+      setName("");
+      setNumber("");
+      setLocation("");
     }
-   
-
-  handleName(e) {
-    this.setState({name: e.target.value})
   }
 
-  handleNumber(e) {
-      this.setState({number: e.target.value})
-  }
+  return (
+    <form onSubmit={(e) => handleSubmit(e)}>
+      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} /> <br />
+      <input type="text" placeholder="Number" value={number} onChange={(e) => setNumber(e.target.value)} /> <br />
+    <input type="text" placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)}  /> <br />
 
-  handleLocation(e) {
-      this.setState({location: e.target.value})
-  }
- 
-  handleSubmit(e) {
-    e.preventDefault()
-   
-    let user = {
-        name: this.state.name,
-        number: this.state.number,
-        location: this.state.location,
-    };
-
-    this.props.addUser(user);
-
-    this.setState({name: "", number: "", location: ""})
-
-    // console.log(this.state.name, this.state.email, this.state.password)
-    
-  }
-
-
-render() {
-    return (
-        <form onSubmit={(e) => this.handleSubmit(e)} >
-            <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={(e) => this.handleName(e)}  /><br />
-            <input type="text" name="number" placeholder="Number" value={this.state.number} onChange={(e) => this.handleNumber(e)}  /><br />
-            <input type="text" name="location" placeholder="Location" value={this.state.location} onChange={(e) => this.handleLocation(e)}  /><br />
-            <input type="submit" />
-        </form>
-    )
+      <input type="submit" />
+    </form>
+  );
 }
-
-
-}
-
 
 export default ContactsForm;

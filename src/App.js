@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import React, {useState} from 'react'
-import './App.css';
-import ContactsForm from './Components/ContactsForm';
-import Contacts from './Components/Contacts';
+import React, { useState } from "react";
+import Contacts from "./Components/Contacts";
+import ContactsForm from "./Components/ContactsForm";
+import "./App.css"
 
 function App() {
-  const [users, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  function addUser(addUp) {
-    setUser([...users, addUp])
+  function addUser(user) {
+    setUsers([...users, user]);
   }
 
-  return(
+
+  function editUser(newDetails, userId) {
+    const editedUser = users.map((user) => {
+      if (userId === user.id) {
+        return newDetails;
+      } else {
+        return user;
+      }
+    });
+
+    setUsers(editedUser);
+  }
+
+
+  function deleteUser(userId) {
+
+    const filteredUsers = users.filter((user) => {
+      return userId !== user.id;
+    });
+
+    setUsers(filteredUsers);
+  }
+
+  return (
     <div>
       <ContactsForm addUser={addUser} />
-      <Contacts user={users} />
+      <Contacts users={users} deleteUser={deleteUser} editUser={editUser}  />
     </div>
-  )
-
+  );
 }
-
 
 export default App;
