@@ -1,14 +1,18 @@
 const initialState = {
-    contact: [
-        {name: "Kwame", number: "+233570885254", location: "Kasoa"},
-        {name: "Kwame", number: "+233570885254", location: "Kasoa"},
-        {name: "Kwame", number: "+233570885254", location: "Kasoa"}
-    ]
-}
+    contacts: [ ],
+};
 
 
 const contactReducer = ( state = initialState, action ) => {
-    return state
-}
+    switch (action.type) {
+        case "ADD_CONTACT" :
+        // console.log(action.payload);
+        return {...state, contacts: [...state.contacts, action.payload]}
+   
+        default: 
+        return state;
+    }
+    
+};
 
 export default contactReducer;

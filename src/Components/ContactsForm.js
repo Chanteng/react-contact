@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
-
+import {addContacts} from "../actions/contactActions"
+import {connect} from "react-redux"
 
 
 function ContactsForm(props) {
@@ -12,14 +13,14 @@ function ContactsForm(props) {
     e.preventDefault();
 
     if (number && name && location) {
-      let newUser = {
+      let newContact = {
         name: name,
         number: number,
         location: location,
         id: uuid(),
       };
 
-      props.addUser(newUser);
+      props.addNewContacts(newContact);
 
       setName("");
       setNumber("");
@@ -31,11 +32,16 @@ function ContactsForm(props) {
     <form onSubmit={(e) => handleSubmit(e)}>
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} /> <br />
       <input type="text" placeholder="Number" value={number} onChange={(e) => setNumber(e.target.value)} /> <br />
-    <input type="text" placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)}  /> <br />
+    <input type="location" placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)}  /> <br />
 
       <input type="submit" />
     </form>
   );
 }
 
-export default ContactsForm;
+const mapDispatchToProps = {
+  addNewContacts: addContacts
+};
+
+
+export default connect(null, mapDispatchToProps) (ContactsForm);

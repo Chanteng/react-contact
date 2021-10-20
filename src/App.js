@@ -6,9 +6,9 @@ import "./App.css"
 function App() {
   const [users, setUsers] = useState([]);
 
-  function addUser(user) {
-    setUsers([...users, user]);
-  }
+  // function addUser(user) {
+  //   setUsers([...users, user]);
+  // }
 
 
   function editUser(newDetails, userId) {
@@ -35,8 +35,8 @@ function App() {
 
   return (
     <div>
-      <ContactsForm addUser={addUser} />
-      <Contacts users={users} deleteUser={deleteUser} editUser={editUser}  />
+      <ContactsForm  />
+      <Contacts deleteUser={deleteUser} editUser={editUser}  />
     </div>
   );
 }
