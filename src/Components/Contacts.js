@@ -13,8 +13,7 @@ function Contacts(props) {
           <ContactsDelete
             user={user}
             key={user.id}
-            deleteUser={props.deleteUser}
-            editUser={props.editUser}
+          
           />
         );
       })}

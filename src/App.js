@@ -11,32 +11,32 @@ function App() {
   // }
 
 
-  function editUser(newDetails, userId) {
-    const editedUser = users.map((user) => {
-      if (userId === user.id) {
-        return newDetails;
-      } else {
-        return user;
-      }
-    });
+  // function editUser(newDetails, userId) {
+  //   const editedUser = users.map((user) => {
+  //     if (userId === user.id) {
+  //       return newDetails;
+  //     } else {
+  //       return user;
+  //     }
+  //   });
 
-    setUsers(editedUser);
-  }
+  //   setUsers(editedUser);
+  // }
 
 
-  function deleteUser(userId) {
+  // function deleteUser(userId) {
 
-    const filteredUsers = users.filter((user) => {
-      return userId !== user.id;
-    });
+  //   const filteredUsers = users.filter((user) => {
+  //     return userId !== user.id;
+  //   });
 
-    setUsers(filteredUsers);
-  }
+  //   setUsers(filteredUsers);
+  // }
 
   return (
     <div>
       <ContactsForm  />
-      <Contacts deleteUser={deleteUser} editUser={editUser}  />
+      <Contacts  />
     </div>
   );
 }

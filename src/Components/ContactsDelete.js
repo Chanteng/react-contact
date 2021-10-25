@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import EditContatcts from "./EditContatcts";
+import {deleteContacts} from "../actions/contactActions"
+import {connect} from "react-redux"
+
 
 function User(props) {
   const user = props.user;
@@ -23,7 +26,7 @@ function User(props) {
         Edit
       </Button>
 
-       { <Button variant="danger" onClick={() => props.deleteUser(user.id)}>
+       { <Button variant="danger" onClick={() => props.deleteContacts(user.id)}>
         Delete
       </Button> }
 
@@ -46,4 +49,9 @@ function User(props) {
   );
 }
 
-export default User;
+
+const mapDispatchToProps = {
+  deleteContacts,
+}
+ 
+export default connect (null, mapDispatchToProps) (User);
