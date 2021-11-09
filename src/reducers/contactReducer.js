@@ -28,6 +28,9 @@ const contactReducer = (state = initialState, action) => {
       return {...state, contacts: filteredContacts}
 
 
+    case "SET_ALL_CONTACTS":
+      return { ...state, contacts: action.payload };
+
     default:
       return state;
   }
