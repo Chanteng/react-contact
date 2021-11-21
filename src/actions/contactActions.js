@@ -14,7 +14,7 @@ export const addContacts = (contacts) => {
 // };
 // };
 
-export default editContacts = (id, updatedContact) => {
+export const editContacts = (id, updatedContact) => {
   return (dispatch, state, { getFirestore }) => {
     getFirestore()
       .collection("contacts")
@@ -24,14 +24,8 @@ export default editContacts = (id, updatedContact) => {
   };
 };
 
-// export const editContatcts = (id, updatedContact) => {
-//     return {
-//         type: "EDIT_CONTACT",
-//         payload: {id, updatedContact}
-//     }
-// };
 
-export default deleteContacts = (id) => {
+export const deleteContacts = (id) => {
     return (dispatch, state, { getFirestore }) => {
         getFirestore()
           .collection("contacts")
@@ -41,12 +35,6 @@ export default deleteContacts = (id) => {
       };
 }
 
-// export const deleteContacts = (id) => {
-//   return {
-//     type: "DELETE_CONTACT",
-//     payload: id,
-//   };
-// };
 
 export const getAllContact = () => {
   return (dispatch, state, { getFirestore }) => {
