@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { registerWithEmail, loginWithGoogle } from "../actions/authAction";
 
 function Register(props) {
+    if (!props.auth.isLoaded) return null;
+	if (!props.auth.isEmpty) props.history.push("/");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let email = e.target.elements.email.value;
@@ -41,7 +44,10 @@ function Register(props) {
   );
 }
 
-const mapStateToProps = () => {};
+const mapStateToProps = (state) => {
+	return {
+		auth: state.firebase.auth,
+	}}
 
 const mapDispatchToProps = {
   registerWithEmail, loginWithGoogle

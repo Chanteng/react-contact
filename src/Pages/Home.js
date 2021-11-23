@@ -3,6 +3,8 @@ import {getAllContact} from "../actions/contactActions"
 import {connect} from "react-redux"
 import ContactsForm from "../Components/ContactsForm";
 import Contacts from "../Components/Contacts";
+import {Button} from "react-bootstrap"
+import {logoutUser} from "../actions/authAction"
 
 
 
@@ -16,13 +18,14 @@ function Home(props) {
   return (
     <div>
       <ContactsForm />
-      <Contacts/>
+      <Contacts/> <br />
+      <Button onClick={props.logoutUser} >Log out</Button>
     </div>
   );
 }
 
 const mapDispatchToProps = {
-	getAllContact,
+	getAllContact, logoutUser
 };
 
 
