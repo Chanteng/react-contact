@@ -23,7 +23,8 @@ function Contacts(props) {
 
 const mapStateToProps = (state) => {
   return {
-    contactsData: state.contacts
+    contactsData: state.contacts,
+    // contactsData: state.ContactsState.users
   }
 }
 

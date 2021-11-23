@@ -7,13 +7,6 @@ export const addContacts = (contacts) => {
   };
 };
 
-// export const addContacts = (newContacts) => {
-// return {
-//     type: "ADD_CONTACT",
-//     payload: newContacts
-// };
-// };
-
 export const editContacts = (id, updatedContact) => {
   return (dispatch, state, { getFirestore }) => {
     getFirestore()
